@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f766e">
+  <title>MediScan AI — Medical Report Analyzer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">✚</span><span>MediScan <b>AI</b><small>Medical report insights</small></span></a>
+    <span class="demo-pill"><span></span> Demo mode · Runs in your browser</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow"><span>✦</span> HEALTHCARE INTELLIGENCE</div>
+      <h1>Understand your health<br><em>report, more clearly.</em></h1>
+      <p>Review laboratory results, identify values outside supplied reference ranges, and surface patterns worth discussing with a healthcare professional.</p>
+      <div class="hero-stats">
+        <div><strong>01</strong><span>Enter results</span></div>
+        <div><strong>02</strong><span>Check ranges</span></div>
+        <div><strong>03</strong><span>Review insights</span></div>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <div class="section-heading">
+        <div><span class="step">STEP 01</span><h2>Add laboratory results</h2><p>Enter results from a report, or load the sample data to explore the demo.</p></div>
+        <button id="sampleBtn" class="button button-light">Load sample report</button>
+      </div>
+
+      <div class="privacy-note"><span>▣</span><div><b>Your data stays in this browser</b><p>This demo does not upload or save your report to a server. Avoid entering identifying information.</p></div></div>
+
+      <div class="entry-grid">
+        <label>Patient age (optional)<input id="patientAge" type="number" min="0" max="120" placeholder="e.g. 42"></label>
+        <label>Sex-specific ranges needed?
+          <select id="sex"><option value="unspecified">Not specified</option><option value="female">Female</option><option value="male">Male</option></select>
+        </label>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Test name</th><th>Result</th><th>Unit</th><th>Low range</th><th>High range</th><th></th></tr></thead>
+          <tbody id="resultRows"></tbody>
+        </table>
+      </div>
+      <div class="row-actions"><button id="addRowBtn" class="button button-light">＋ Add test</button><span class="muted">Use the reference range printed on your own report.</span></div>
+      <div class="analyze-row"><div><b>Ready to review?</b><p>Checks each result against the range you provide.</p></div><button id="analyzeBtn" class="button button-primary">Analyze report <span>→</span></button></div>
+    </section>
+
+    <section id="resultsSection" class="results-section hidden">
+      <div class="section-heading results-title"><div><span class="step">STEP 02</span><h2>Report overview</h2><p id="resultSummary">Your results will appear here.</p></div><button id="downloadBtn" class="button button-light">↓ Export summary</button></div>
+      <div id="metricCards" class="metric-grid"></div>
+      <div class="results-grid">
+        <div class="panel"><div class="panel-heading"><div><span class="step">RESULT REVIEW</span><h3>Individual indicators</h3></div><span class="legend"><i class="normal-dot"></i> In range <i class="abnormal-dot"></i> Out of range</span></div><div id="resultList"></div></div>
+        <aside class="panel insights-panel"><span class="step">PATTERN CHECK</span><h3>Things to review</h3><p class="panel-subtitle">Rule-based observations, not a diagnosis.</p><div id="insightsList"></div></aside>
+      </div>
+      <div class="disclaimer"><span>ⓘ</span><p><b>Important:</b> This tool is for educational purposes and does not diagnose disease or replace professional medical advice. Reference ranges vary by laboratory, age, sex, pregnancy status, and clinical context. Discuss unexpected results with a qualified healthcare professional. If you have severe or sudden symptoms, seek urgent medical care.</p></div>
+    </section>
+
+    <footer><span>✚ MediScan AI</span><span>Educational prototype · No medical diagnosis</span></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
